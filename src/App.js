@@ -78,7 +78,7 @@ function App() {
       </Fab>
       <Fab variant="extended">
         <NavigationIcon sx={{ mr: 1 }} />
-        Navigate
+        Navigate~위치
       </Fab>
       <Fab disabled aria-label="like">
         <FavoriteIcon />
