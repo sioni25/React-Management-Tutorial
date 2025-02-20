@@ -1,5 +1,23 @@
 import './App.css';
 import Customer from './components/Customer';
+import { Fab, Paper, Button, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
+import { styled } from '@mui/system';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import NavigationIcon from '@mui/icons-material/Navigation';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
+// 스타일 적용 방식 2 => styled API (MUI v5 권장 방식)
+const StyledTable = styled(Table)`
+  min-width: 500px;
+`;
+
+const StyledPaper = styled(Paper)`
+  width: 100%;
+  margin-top: 24px;
+  overflow-x: auto;
+`;
+
 
 const customers = [
   {
@@ -23,7 +41,18 @@ const customers = [
 ]
 function App() {
   return (
-    <div>
+    <StyledPaper>
+      <StyledTable>
+      <TableHead>
+        <TableRow>
+          <TableCell>번호</TableCell>
+          <TableCell>이미지</TableCell>
+          <TableCell>이름</TableCell>
+          <TableCell>나이</TableCell>
+        </TableRow>
+      </TableHead>
+
+        <TableBody>
       {
         customers.map(c => {
           return (
@@ -37,10 +66,32 @@ function App() {
           );
         })
       }
-     
-    
-    </div>
-  );
+      </TableBody>
+      </StyledTable>
+
+{/* 머터리얼 디자인에서 버튼 적용해봄 */}
+      <Fab color="primary" aria-label="add">
+        <AddIcon />
+      </Fab>
+      <Fab size="small" color="secondary" aria-label="edit">
+        <EditIcon />
+      </Fab>
+      <Fab variant="extended">
+        <NavigationIcon sx={{ mr: 1 }} />
+        Navigate
+      </Fab>
+      <Fab disabled aria-label="like">
+        <FavoriteIcon />
+      </Fab>
+      <Fab variant="extended">
+        전송
+      </Fab>
+
+      <Button variant="contained" color="primary">
+        클릭하세요
+      </Button>
+      </StyledPaper>
+    );
 }
 
 export default App;
